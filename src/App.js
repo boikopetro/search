@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import {useMemo, useState} from "react";
 
 function App() {
+  const data = ["вс2249аа", "ав12345ав", "аа456аа"];
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const search = useMemo(() => data.filter(n => n.includes(searchQuery))
+      , [searchQuery,data])
+  console.log(search)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <h1>Пошук</h1>
+        <div>
+          <input
+              className="input"
+              placeholder="введіть номер"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}/>
+        </div>
+        <div>
+          {searchQuery && search.map(n =>
+              <div>
+                <p key={n.i} style={{color: (n === searchQuery) ? "red" : "black"}}>{n}</p>
+                <div>{(n === searchQuery) ? <p className="danger">Розшук!!!</p> : ""}</div>
+              </div>)}
+        </div>
+      </div>
   );
 }
 
