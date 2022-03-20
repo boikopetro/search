@@ -5,7 +5,7 @@ function App() {
   const data = ["вс2249аа", "ав12345ав", "аа456аа"];
   const [searchQuery, setSearchQuery] = useState("");
 
-  const search = useMemo(() => data.filter(n => n.includes(searchQuery))
+  const search = useMemo(() => data.filter(n => n.trim().toUpperCase().includes(searchQuery.trim().toUpperCase()))
       , [searchQuery,data])
   console.log(search)
   return (
