@@ -160,9 +160,12 @@ function App() {
                     <div>
                         <p key={n.i}
                            style={{color: (n.trim().toUpperCase() === searchQuery.trim().toUpperCase()) ? "red" : "black"}}>{n}</p>
-                        <div>{(n.trim().toUpperCase() === searchQuery.trim().toUpperCase()) ?
-                            <p className="danger">Розшук, або не дійсний паспорт!!!</p> : ""}</div>
+                        <div>
+                            {(n.trim().toUpperCase() === searchQuery.trim().toUpperCase()) ?
+                                <p className="danger">Розшук, або не дійсний паспорт!!!</p> : ""}
+                        </div>
                     </div>)}
+                {!search.length && <p>нічого не знайдено</p>}
             </div>
             <div className="container">
                 <div>
