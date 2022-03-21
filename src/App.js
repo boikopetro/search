@@ -157,40 +157,48 @@ function App() {
             </div>
             <div>
                 {searchQuery && search.map(n =>
-                    <div>
+                    <div className="center">
                         <p key={n.i}
-                           style={{color: (n.trim().toUpperCase() === searchQuery.trim().toUpperCase()) ? "red" : "black"}}>{n}</p>
+                           style={{color: (n.trim().toUpperCase() === searchQuery.trim().toUpperCase()) ? "red" : "black"}}>
+                            {n}
+                        </p>
                         <div>
-                            {(n.trim().toUpperCase() === searchQuery.trim().toUpperCase()) ?
-                                <p className="danger">Розшук, або не дійсний паспорт!!!</p> : ""}
+                            {(n.trim().toUpperCase() === searchQuery.trim().toUpperCase()) &&
+                            <p className="danger">Розшук, або не дійсний паспорт!!!</p>}
                         </div>
                     </div>)}
-                {!search.length && <p>нічого не знайдено</p>}
+                {!search.length &&
+                <div className="center">
+                    <p>нічого не знайдено</p>
+                    <p>¯\_(ツ)_/¯</p>
+                </div>}
             </div>
             <div className="container">
                 <div>
+                    <p>.......................................................................</p>
                     <h2>Інструкції :</h2>
-                    <h3>можна здійснювати пошук по:</h3>
+                    <h3>Можна здійснювати пошук по:</h3>
                     <p>- номеру авто</p>
                     <p>- серії та номеру паспорта</p>
                     <p>- прізвище та імя (в базу внесено тільки тих хто оголошені в розшук)</p>
                 </div>
                 <div>
-                    <h3>правила вводу:</h3>
+                    <h3>Правила вводу :</h3>
                     <p>- вводити тільки букви та цифри,
                         без будь яких символів (без пробілів, рисок і тп...)</p>
                     <p>- регістр не залежний
                         (тобто намає різниці малі букви чи великі) </p>
                 </div>
                 <div>
-                    <h3>інфо</h3>
+                    <h3>Інфо :</h3>
                     <p>- під полем вводу появляється список співпадінь</p>
                     <p>- повідомлення про небезпеку
                         виводиться тільки при повному співпадінні даних</p>
                 </div>
-                <div>
-                    <p>виникли запитання, або є пропозиції, звертайтесь</p>
-                    <p><a href="https://t.me/BoikoPetro">техпідтримка</a></p>
+                <div className="center">
+                    <p>.......................................................................</p>
+                    <a href="https://t.me/BoikoPetro">- техпідтримка -</a>
+                    <p>.......................................................................</p>
                 </div>
             </div>
         </div>
